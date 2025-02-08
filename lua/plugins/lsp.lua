@@ -13,47 +13,47 @@ return {
     event = { "VeryLazy" },
     config = function()
       -- None LS for Formatting and linting
-      -- require("mason-null-ls").setup({
-      -- 	automatic_installation = true,
-      -- 	ensure_installed = {
-      -- 		"stylua", -- Lua Formatting
-      -- 		"rubocop", -- Ruby Formatting
-      -- 		"prettier", -- Javascript Formatting
-      -- 		"prettierd", -- Javascript Formatting
-      -- 		-- "isort", -- Python Linter / diagnostics
-      -- 		-- "black", -- Python Formatting
-      -- 		"shfmt", -- Bash
-      -- 	},
-      -- })
+      require("mason-null-ls").setup({
+        automatic_installation = true,
+        ensure_installed = {
+          "stylua",  -- Lua Formatting
+          "rubocop", -- Ruby Formatting
+          "prettier", -- Javascript Formatting
+          "prettierd", -- Javascript Formatting
+          -- "isort", -- Python Linter / diagnostics
+          -- "black", -- Python Formatting
+          "shfmt", -- Bash
+        },
+      })
 
-      -- local null_ls = require("null-ls")
-      -- null_ls.setup({
-      -- 	sources = {
-      -- 		-- Lua
-      -- 		null_ls.builtins.formatting.stylua,
-      -- 		-- Ruby
-      -- 		null_ls.builtins.diagnostics.rubocop,
-      -- 		null_ls.builtins.formatting.rubocop,
-      -- 		-- JS
-      -- 		null_ls.builtins.formatting.prettier,
-      -- 		null_ls.builtins.formatting.prettierd,
-      -- 		-- Python
-      -- 		-- null_ls.builtins.formatting.black,
-      -- 		-- null_ls.builtins.formatting.isort,
-      -- 		-- Bash
-      -- 		null_ls.builtins.formatting.shfmt,
-      -- 	},
-      -- })
+      local null_ls = require("null-ls")
+      null_ls.setup({
+        sources = {
+          -- Lua
+          null_ls.builtins.formatting.stylua,
+          -- Ruby
+          null_ls.builtins.diagnostics.rubocop,
+          null_ls.builtins.formatting.rubocop,
+          -- JS
+          null_ls.builtins.formatting.prettier,
+          null_ls.builtins.formatting.prettierd,
+          -- Python
+          -- null_ls.builtins.formatting.black,
+          -- null_ls.builtins.formatting.isort,
+          -- Bash
+          null_ls.builtins.formatting.shfmt,
+        },
+      })
 
-      -- -- Formatting with none-ls
-      -- local lsp_formatting = function()
-      -- 	vim.lsp.buf.format({
-      -- 		filter = function(client)
-      -- 			return client.name == "null-ls"
-      -- 		end,
-      -- 		timeout_ms = 5000,
-      -- 	})
-      -- end
+      -- Formatting with none-ls
+      local lsp_formatting = function()
+        vim.lsp.buf.format({
+          filter = function(client)
+            return client.name == "null-ls"
+          end,
+          timeout_ms = 5000,
+        })
+      end
 
       -- Virtual Text Config
       vim.diagnostic.config({
@@ -90,8 +90,8 @@ return {
         -- Code actions
         vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, opts)
         vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-        -- vim.keymap.set("n", "<leader>cf", lsp_formatting, opts)
-        vim.keymap.set("n", "<leader>cf", vim.lsp.buf.format, opts)
+        vim.keymap.set("n", "<leader>cf", lsp_formatting, opts)
+        -- vim.keymap.set("n", "<leader>cf", vim.lsp.buf.format, opts)
 
         -- Diagnostics
         vim.keymap.set("n", "<leader>da", "<cmd>Telescope diagnostics<CR>", { noremap = true, silent = true })
@@ -115,16 +115,16 @@ return {
       local mason_lspconfig = require("mason-lspconfig")
       mason_lspconfig.setup({
         ensure_installed = {
-          "lua_ls", -- Lua
+          "lua_ls",     -- Lua
           "solargraph", -- Ruby
           -- "rust_analyzer", -- Rust
           -- "clangd", -- C
-          "jsonls", -- JSON
-          "html",   -- HTML
-          "ts_ls",  -- Typescript
+          "jsonls",      -- JSON
+          "html",        -- HTML
+          "ts_ls",       -- Typescript
           "tailwindcss", -- Tailwindcss
           -- "pyright", -- Python
-          "bashls", -- Bash
+          "bashls",      -- Bash
         },
       })
 
