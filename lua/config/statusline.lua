@@ -1,48 +1,61 @@
-local modes = {
-  ["n"] = "NORMAL",
-  ["no"] = "NORMAL",
-  ["v"] = "VISUAL",
-  ["V"] = "VISUAL LINE",
-  ["␖"] = "VISUAL BLOCK",
-  ["s"] = "SELECT",
-  ["S"] = "SELECT LINE",
-  ["␓"] = "SELECT BLOCK",
-  ["i"] = "INSERT",
-  ["ic"] = "INSERT",
-  ["R"] = "REPLACE",
-  ["Rv"] = "VISUAL REPLACE",
-  ["c"] = "COMMAND",
-  ["cv"] = "VIM EX",
-  ["ce"] = "EX",
-  ["r"] = "PROMPT",
-  ["rm"] = "MOAR",
-  ["r?"] = "CONFIRM",
-  ["!"] = "SHELL",
-  ["t"] = "TERMINAL",
-}
+local function get_current_mode() 
+  local current_mode = vim.api.nvim_get_mode().mode
+
+  -- Normalize weird characters to readable keys
+  if current_mode == "\22" then -- CTRL+V (visual block)
+    current_mode = "v_block"
+  elseif current_mode == "\19" then -- CTRL+S (select block)
+    current_mode = "s_block"
+  end
+
+  local mode_name = {
+    n = "NORMAL",
+    no = "NORMAL",
+    v = "VISUAL",
+    V = "VISUAL LINE",
+    v_block = "VISUAL BLOCK",
+    s = "SELECT",
+    S = "SELECT LINE",
+    s_block = "SELECT BLOCK",
+    i = "INSERT",
+    ic = "INSERT",
+    R = "REPLACE",
+    Rv = "VIRTUAL REPLACE",
+    c = "COMMAND",
+    cv = "VIM EX",
+    ce = "EX",
+    r = "PROMPT",
+    rm = "MOAR",
+    ["r?"] = "CONFIRM",
+    ["!"] = "SHELL",
+    t = "TERMINAL",
+  }
+
+  return mode_name[current_mode] or current_mode
+end
 
 local function mode()
-  local current_mode = vim.api.nvim_get_mode().mode
-  return string.format("  %s  ", modes[current_mode]):upper()
+  local current_mode = get_current_mode()
+  return string.format(" %s ", current_mode):upper()
 end
 
 local function update_mode_colors()
-  local current_mode = vim.api.nvim_get_mode().mode
-  local mode_color = "%#StatusLineNormal#"
+  -- local current_mode = get_current_mode()
+  local mode_color = "%#@attribute#"
 
-  if current_mode == "n" then
-    mode_color = "%#StatusLineNormalMode#"
-  elseif current_mode == "i" or current_mode == "ic" then
-    mode_color = "%#StatusLineInsertMode#"
-  elseif current_mode == "v" or current_mode == "V" or current_mode == "␖" then
-    mode_color = "%#StatusLineVisualMode#"
-  elseif current_mode == "R" then
-    mode_color = "%#StatusLineReplaceMode#"
-  elseif current_mode == "c" then
-    mode_color = "%#StatusLineCmdLineMode#"
-  elseif current_mode == "t" then
-    mode_color = "%#StatusLineTerminalMode#"
-  end
+  -- if current_mode == "NORMAL" then
+  --   mode_color = "%#ModesDelete#"
+  -- elseif current_mode == "INSERT" then
+  --   mode_color = "%#ModesInsert#"
+  -- elseif current_mode == "VISUAL" or current_mode == "VISUAL BLOCK" then
+  --   mode_color = "%#ModesVisual#"
+  -- elseif current_mode == "REPLACE" then
+  --   mode_color = "%#ModesReplace#"
+  -- elseif current_mode == "COMMAND" then
+  --   mode_color = "%#ModesCopy#"
+  -- elseif current_mode == "TERMINAL" then
+  --   mode_color = "%#ModesDelete#"
+  -- end
 
   return mode_color
 end
@@ -53,9 +66,9 @@ local versioncontrol = function()
     return ""
   end
 
-  local added = git_info.added and ("%#StatusLineGitSignsAdd#+" .. git_info.added .. " ") or ""
-  local changed = git_info.changed and ("%#StatusLineGitSignsChange#~" .. git_info.changed .. " ") or ""
-  local removed = git_info.removed and ("%#StatusLineGitSignsDelete#-" .. git_info.removed .. " ") or ""
+  local added = git_info.added and ("%#GitSignsAdd#+" .. git_info.added .. " ") or ""
+  local changed = git_info.changed and ("%#GitSignsChange#~" .. git_info.changed .. " ") or ""
+  local removed = git_info.removed and ("%#GitSignsDelete#-" .. git_info.removed .. " ") or ""
 
   if git_info.added == 0 then
     added = ""
@@ -68,11 +81,11 @@ local versioncontrol = function()
   end
 
   return table.concat({
-    "%#StatusLineGitSignsAdd# ",
+    " ",
     added,
     changed,
     removed,
-    "%#StatusLineGitSignsOnBranch#· ",
+    "%#Directory#· ",
     git_info.head,
     " ",
   })
@@ -110,21 +123,20 @@ local function lsp()
 
   local errors = ""
   local warnings = ""
-
   local hints = ""
   local info = ""
 
   if count["errors"] ~= 0 then
-    errors = "%#StatusLineLspError# e" .. count["errors"]
+    errors = "%#DiagnosticError# e" .. count["errors"]
   end
   if count["warnings"] ~= 0 then
-    warnings = "%#StatusLineLspWarning# w" .. count["warnings"]
+    warnings = "%#DiagnosticWarn# w" .. count["warnings"]
   end
   if count["hints"] ~= 0 then
-    hints = "%#StatusLineLspHint# h" .. count["hints"]
+    hints = "%#DiagnosticHint# h" .. count["hints"]
   end
   if count["info"] ~= 0 then
-    info = "%#StatusLineLspInfo# i" .. count["info"]
+    info = "%#DiagnosticInfo# i" .. count["info"]
   end
 
   return errors .. warnings .. hints .. info .. " "
@@ -150,30 +162,31 @@ Statusline = {}
 
 Statusline.active = function()
   if vim.bo.filetype == "NvimTree" or vim.bo.filetype == "Telescope" or vim.bo.filetype == "alpha" then
-    return "%#StatusLineNormal#"
+    return "%#StatusLine#"
   end
 
   return table.concat({
     update_mode_colors(),
     mode(),
+    "%#StatusLine#",
     versioncontrol(),
-    "%#StatusLineNormal# ",
+    "%#StatusLine# ",
     filepath(),
     filename(),
-    "%#StatuslineNormal#%=",
+    "%#StatusLine#%=",
     lsp(),
-    "%#StatuslineFileinfo#",
+    "%#StatusLine#",
     filetype(),
     lineinfo(),
   })
 end
 
 function Statusline.inactive()
-  return "%#StatusLineNormal# %F"
+  return "%#StatusLineNC# %F"
 end
 
 function Statusline.short()
-  return "%#StatusLineInactive#"
+  return "%#StatusLineNC#"
 end
 
 vim.api.nvim_exec(
