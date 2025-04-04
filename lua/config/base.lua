@@ -30,3 +30,13 @@ vim.cmd([[
   set background=dark
   set termguicolors
 ]])
+
+-- Close quickfix list after jump
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "qf",
+  callback = function()
+    vim.keymap.set("n", "<CR>", function()
+      vim.cmd("execute 'cc' . line('.') | cclose")
+    end, { buffer = true })
+  end,
+})
