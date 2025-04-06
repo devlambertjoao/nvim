@@ -11,7 +11,7 @@ vim.api.nvim_create_autocmd("FileType", {
       root_dir = root_dir,
       settings = {
         json = {
-          schemas = require("schemastore").json.schemas(), -- opcional se estiver usando schemastore.nvim
+          -- schemas = require("schemastore").json.schemas(), -- if use schemastore
           validate = { enable = true },
         },
       },
