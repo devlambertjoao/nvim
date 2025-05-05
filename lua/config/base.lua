@@ -25,7 +25,7 @@ vim.cmd([[
   
   set updatetime=100
   
-  set nowrap
+  " set nowrap
 
   set background=dark
   set termguicolors
