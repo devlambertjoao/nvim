@@ -1,17 +1,2 @@
 lazy-lock.json
-node_modules
-package-lock.json
-yarn.lock
-.temp
-lsp/luals/windows/log/**/*
-lsp/luals/linux-x64/log/**/*
-lsp/luals/macos-arm/log/**/*
 
-lsp/jdtls/config_win/org.*
-lsp/jdtls/config_linux/org.*
-lsp/jdtls/config_mac/org.*
-lsp/jdtls/config_macos/org.*
-
-lsp/clangd/windows/
-lsp/clangd/linux-x64/
-lsp/clangd/macos-arm/
