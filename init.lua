@@ -1,5 +1,0 @@
-require('base')
-require('statusline')
-require('plugins')
-require('startup')
-require('highlights')
