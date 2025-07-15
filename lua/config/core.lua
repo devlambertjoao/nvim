@@ -9,6 +9,8 @@ opt.relativenumber = true
 opt.number = true
 opt.signcolumn = 'yes:1'
 
+opt.showmode = false
+
 opt.encoding = 'utf-8'
 
 opt.cursorline = true
