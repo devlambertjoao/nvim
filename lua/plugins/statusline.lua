@@ -68,6 +68,33 @@ return {
         hi lualine_b_visual guibg=NONE
         hi lualine_b_replace guibg=NONE
 
+        hi lualine_b_diff_added guibg=NONE
+        hi lualine_b_diff_added_insert guibg=NONE
+        hi lualine_b_diff_added_normal guibg=NONE
+        hi lualine_b_diff_added_visual guibg=NONE
+        hi lualine_b_diff_added_command guibg=NONE
+        hi lualine_b_diff_added_replace guibg=NONE
+        hi lualine_b_diff_added_terminal guibg=NONE
+        hi lualine_b_diff_added_inactive guibg=NONE
+        
+        hi lualine_b_diff_modified guibg=NONE
+        hi lualine_b_diff_modified_insert guibg=NONE
+        hi lualine_b_diff_modified_normal guibg=NONE
+        hi lualine_b_diff_modified_visual guibg=NONE
+        hi lualine_b_diff_modified_command guibg=NONE
+        hi lualine_b_diff_modified_replace guibg=NONE
+        hi lualine_b_diff_modified_terminal guibg=NONE
+        hi lualine_b_diff_modified_inactive guibg=NONE
+        
+        hi lualine_b_diff_removed guibg=NONE
+        hi lualine_b_diff_removed_insert guibg=NONE
+        hi lualine_b_diff_removed_normal guibg=NONE
+        hi lualine_b_diff_removed_visual guibg=NONE
+        hi lualine_b_diff_removed_command guibg=NONE
+        hi lualine_b_diff_removed_replace guibg=NONE
+        hi lualine_b_diff_removed_terminal guibg=NONE
+        hi lualine_b_diff_removed_inactive guibg=NONE
+
         hi lualine_c_normal guibg=NONE
         hi lualine_c_insert guibg=NONE
         hi lualine_c_command guibg=NONE
