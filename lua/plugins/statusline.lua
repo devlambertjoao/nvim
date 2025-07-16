@@ -95,6 +95,40 @@ return {
         hi lualine_b_diff_removed_terminal guibg=NONE
         hi lualine_b_diff_removed_inactive guibg=NONE
 
+        hi lualine_b_diagnostics_hint_insert guibg=NONE
+        hi lualine_b_diagnostics_hint_normal guibg=NONE
+        hi lualine_b_diagnostics_hint_visual guibg=NONE
+        hi lualine_b_diagnostics_hint_command guibg=NONE
+        hi lualine_b_diagnostics_hint_replace guibg=NONE
+        hi lualine_b_diagnostics_hint_terminal guibg=NONE
+        hi lualine_b_diagnostics_hint_inactive guibg=NONE
+        
+        hi lualine_b_diagnostics_info_insert guibg=NONE
+        hi lualine_b_diagnostics_info_normal guibg=NONE
+        hi lualine_b_diagnostics_info_visual guibg=NONE
+        hi lualine_b_diagnostics_info_command guibg=NONE
+        hi lualine_b_diagnostics_info_replace guibg=NONE
+        hi lualine_b_diagnostics_info_terminal guibg=NONE
+        hi lualine_b_diagnostics_info_inactive guibg=NONE
+        
+        hi lualine_b_diagnostics_warn_insert guibg=NONE
+        hi lualine_b_diagnostics_warn_normal guibg=NONE
+        hi lualine_b_diagnostics_warn_visual guibg=NONE
+        hi lualine_b_diagnostics_warn_command guibg=NONE
+        hi lualine_b_diagnostics_warn_replace guibg=NONE
+        hi lualine_b_diagnostics_warn_terminal guibg=NONE
+        hi lualine_b_diagnostics_warn_inactive guibg=NONE
+        
+        hi lualine_b_diagnostics_error_insert guibg=NONE
+        hi lualine_b_diagnostics_error_normal guibg=NONE
+        hi lualine_b_diagnostics_error_visual guibg=NONE
+        hi lualine_b_diagnostics_error_command guibg=NONE
+        hi lualine_b_diagnostics_error_replace guibg=NONE
+        hi lualine_b_diagnostics_error_terminal guibg=NONE
+        hi lualine_b_diagnostics_error_inactive guibg=NONE
+
+        
+
         hi lualine_c_normal guibg=NONE
         hi lualine_c_insert guibg=NONE
         hi lualine_c_command guibg=NONE
