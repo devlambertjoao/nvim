@@ -41,7 +41,7 @@ return {
         sections = {
           lualine_a = { 'mode' },
           lualine_b = { 'branch', 'diff', 'diagnostics' },
-          lualine_c = { 'filename' },
+          lualine_c = { { 'filename', path = 1 } },
           lualine_x = { 'filetype' },
           lualine_y = { 'progress' },
           lualine_z = { 'location' }
@@ -76,7 +76,7 @@ return {
         hi lualine_b_diff_added_replace guibg=NONE
         hi lualine_b_diff_added_terminal guibg=NONE
         hi lualine_b_diff_added_inactive guibg=NONE
-        
+
         hi lualine_b_diff_modified guibg=NONE
         hi lualine_b_diff_modified_insert guibg=NONE
         hi lualine_b_diff_modified_normal guibg=NONE
@@ -85,7 +85,7 @@ return {
         hi lualine_b_diff_modified_replace guibg=NONE
         hi lualine_b_diff_modified_terminal guibg=NONE
         hi lualine_b_diff_modified_inactive guibg=NONE
-        
+
         hi lualine_b_diff_removed guibg=NONE
         hi lualine_b_diff_removed_insert guibg=NONE
         hi lualine_b_diff_removed_normal guibg=NONE
@@ -102,7 +102,7 @@ return {
         hi lualine_b_diagnostics_hint_replace guibg=NONE
         hi lualine_b_diagnostics_hint_terminal guibg=NONE
         hi lualine_b_diagnostics_hint_inactive guibg=NONE
-        
+
         hi lualine_b_diagnostics_info_insert guibg=NONE
         hi lualine_b_diagnostics_info_normal guibg=NONE
         hi lualine_b_diagnostics_info_visual guibg=NONE
@@ -110,7 +110,7 @@ return {
         hi lualine_b_diagnostics_info_replace guibg=NONE
         hi lualine_b_diagnostics_info_terminal guibg=NONE
         hi lualine_b_diagnostics_info_inactive guibg=NONE
-        
+
         hi lualine_b_diagnostics_warn_insert guibg=NONE
         hi lualine_b_diagnostics_warn_normal guibg=NONE
         hi lualine_b_diagnostics_warn_visual guibg=NONE
@@ -118,7 +118,7 @@ return {
         hi lualine_b_diagnostics_warn_replace guibg=NONE
         hi lualine_b_diagnostics_warn_terminal guibg=NONE
         hi lualine_b_diagnostics_warn_inactive guibg=NONE
-        
+
         hi lualine_b_diagnostics_error_insert guibg=NONE
         hi lualine_b_diagnostics_error_normal guibg=NONE
         hi lualine_b_diagnostics_error_visual guibg=NONE
@@ -127,7 +127,7 @@ return {
         hi lualine_b_diagnostics_error_terminal guibg=NONE
         hi lualine_b_diagnostics_error_inactive guibg=NONE
 
-        
+
 
         hi lualine_c_normal guibg=NONE
         hi lualine_c_insert guibg=NONE

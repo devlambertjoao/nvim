@@ -21,13 +21,13 @@ return {
       mason_lspconfig.setup({
         automatic_installation = false,
         ensure_installed = {
-          "lua_ls",     -- Lua
+          "lua_ls",      -- Lua
           -- "solargraph", -- Ruby
           "jsonls",      -- JSON
           "html",        -- HTML
           "ts_ls",       -- Typescript
-          "tailwindcss", -- Tailwindcss
-          "cssls",     -- CSS, SCSS, SASS
+          -- "tailwindcss", -- Tailwindcss
+          "cssls",       -- CSS, SCSS, SASS,
           -- "rust_analyzer", -- Rust
           -- "clangd", -- C
           -- "pyright", -- Python
