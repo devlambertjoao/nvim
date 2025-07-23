@@ -16,7 +16,11 @@ return {
       })
 
       vim.keymap.set("n", "<leader>cf", function()
-        conform.format({ async = true })
+        if conform.will_format then
+          conform.format({ async = true })
+        else
+          vim.lsp.buf.format({ async = true })
+        end
       end)
     end,
   },
