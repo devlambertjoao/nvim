@@ -15,6 +15,9 @@ return {
         },
       })
 
+      -- MasonInstall prettier
+      -- MasonInstall prettierd
+
       vim.keymap.set("n", "<leader>cf", function()
         conform.format({ async = true, lsp_format = true })
         -- print("conform")
