@@ -16,12 +16,9 @@ return {
       })
 
       vim.keymap.set("n", "<leader>cf", function()
-        if conform.will_format then
-          conform.format({ async = true })
-        else
-          vim.lsp.buf.format({ async = true })
-        end
-      end)
+        conform.format({ async = true, lsp_format = true })
+        -- print("conform")
+      end, { desc = "Format file" })
     end,
   },
 }
