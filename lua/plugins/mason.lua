@@ -26,7 +26,7 @@ return {
           "jsonls",      -- JSON
           "html",        -- HTML
           "ts_ls",       -- Typescript
-          -- "tailwindcss", -- Tailwindcss
+          "tailwindcss", -- Tailwindcss
           "cssls",       -- CSS, SCSS, SASS,
           -- "rust_analyzer", -- Rust
           -- "clangd", -- C
