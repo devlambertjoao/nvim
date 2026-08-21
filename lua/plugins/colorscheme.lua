@@ -1,5 +1,6 @@
 return {
-  "navarasu/onedark.nvim",
+  name = "grape",
+  dir = vim.fn.stdpath("config"),
   priority = 1000,
   lazy = false,
   config = function()
@@ -37,13 +38,6 @@ return {
       end,
     })
 
-    local theme = require('onedark')
-    theme.setup({
-      style = 'darker'
-    })
-    theme.load()
-
-
-    -- vim.cmd([[ colorscheme  ]])
-  end
+    vim.cmd.colorscheme("grape")
+  end,
 }
